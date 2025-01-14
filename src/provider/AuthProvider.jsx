@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import app from "../../firebase.init";
@@ -79,7 +80,7 @@ const AuthProvider = ({ children }) => {
   /// create account with email and password and name and photoURL
   const createAccount = (email, password, name, photoURL) => {
     setLoading(true);
-    
+
     return new Promise((resolve, reject) => {
       if (!email) {
         setLoading(false);
@@ -114,12 +115,24 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  // logout user
+  //
+  const LogOut = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+    } catch (error) {
+      console.error("Error during sign out:", error); // Log the error
+    }
+  };
+
   const value = {
     user,
     loading,
     LoginWithGoogle,
     signInUser,
     createAccount,
+    LogOut,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
