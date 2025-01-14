@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css"; // Default styles for tabs
-
+import axios from "axios";
+import HOST from "../../constant/HOST";
+// const HOST from "../../constant/HOST.jsx";
 const TourismTabs = () => {
+  const [data, setData] = React.useState([]);
+
+  useEffect(() => {
+    const fetchData = axios.get(`${HOST}/api/samples`);
+  });
+
   return (
     <div className="tabs-container">
       <Tabs>
