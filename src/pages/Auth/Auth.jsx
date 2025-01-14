@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 const Auth = () => {
   // import singInWithGoogle from AuthProvider
   const { user, LoginWithGoogle, loading, signInUser } =
@@ -28,6 +29,9 @@ const Auth = () => {
 
   return (
     <div className="container mx-auto card  p-4 flex flex-col justify-center items-center min-h-screen">
+      <Helmet>
+        <title>WanderWise | Login</title>
+      </Helmet>
       {loading ? (
         <span className="loading loading-ring loading-lg"></span>
       ) : (

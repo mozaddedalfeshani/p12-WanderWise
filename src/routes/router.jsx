@@ -3,6 +3,7 @@ import ClientLayout from "../layout/ClientLayout";
 import HomePage from "../pages/HomePage";
 import Auth from "../pages/Auth/Auth";
 import Register from "../pages/Auth/Register";
+import Community from "../pages/community/Community";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "community",
+        element: <Community />,
       },
     ],
   },

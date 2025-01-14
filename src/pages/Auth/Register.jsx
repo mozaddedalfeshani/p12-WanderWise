@@ -1,20 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
+
 const Register = () => {
-  // import singInWithGoogle from AuthProvider
   const { user, LoginWithGoogle, loading, createAccount } =
     useContext(AuthContext);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
 
-  /// login with google
+  const validatePassword = (password) => {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
+    return regex.test(password);
+  };
+
+  const handlePasswordChange = (e) => {
+    const password = e.target.value;
+    setIsPasswordValid(validatePassword(password));
+  };
+
   const handleGoogleLogin = async () => {
     await LoginWithGoogle();
     console.log("Google login", user);
   };
 
-  // login with email and password
   const handleRegister = async (e) => {
     e.preventDefault();
     const email = e.target[2].value;
@@ -35,6 +45,9 @@ const Register = () => {
 
   return (
     <div className="container mx-auto card  p-4 flex flex-col justify-center items-center min-h-screen">
+      <Helmet>
+        <title>WanderWise | Register</title>
+      </Helmet>
       {loading ? (
         <span className="loading loading-ring loading-lg"></span>
       ) : (
@@ -82,11 +95,14 @@ const Register = () => {
                 placeholder="password"
                 className="input input-bordered"
                 required
+                onChange={handlePasswordChange}
               />
             </div>
 
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Register Now</button>
+              <button className="btn btn-primary" disabled={!isPasswordValid}>
+                Register Now
+              </button>
             </div>
 
             <div className="form-control">
