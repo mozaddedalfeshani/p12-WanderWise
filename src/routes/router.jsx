@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import ClientLayout from "../layout/ClientLayout";
 import HomePage from "../pages/HomePage";
+import Auth from "../pages/Auth";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,14 @@ const router = createBrowserRouter([
       {
         path: "/community",
         element: <div>Community</div>,
+      },
+      {
+        path: "/contact",
+        element: <div>Contact</div>,
+      },
+      {
+        path: "/login",
+        element: <Auth />,
       },
     ],
   },

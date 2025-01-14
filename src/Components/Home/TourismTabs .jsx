@@ -10,6 +10,8 @@ const TourismTabs = () => {
   const [packages, setPackages] = React.useState([]);
   const navigate = useNavigate(); // Initialize useNavigate
 
+  const [tourGuides, setTourGuides] = React.useState([]);
+
   useEffect(() => {
     const fetchPackages = async () => {
       try {
@@ -20,6 +22,16 @@ const TourismTabs = () => {
         console.error("Error fetching packages:", error);
       }
     };
+    const fetchTourGuides = async () => {
+      try {
+        const res = await axios.get(`${HOST}/api/tg/`);
+        console.log("Tour Guides:", res.data);
+        setTourGuides(res.data);
+      } catch (error) {
+        console.error("Error fetching tour guides:", error);
+      }
+    };
+    fetchTourGuides();
     fetchPackages();
   }, []);
 
@@ -40,7 +52,9 @@ const TourismTabs = () => {
         <TabPanel>
           {/* Content for "Our Packages" */}
           <div className="packages">
-            <h2>Our Packages</h2>
+            <h2 className="text-center font-bold my-10 text-3xl ">
+              Our Packages
+            </h2>
             <div className="grid grid-cols-1 gap-1  md:grid-cols-3 ">
               {packages.map((item, index) => {
                 return <PackageCard key={index} info={item} />;
@@ -53,11 +67,10 @@ const TourismTabs = () => {
           {/* Content for "Meet Our Tour Guides" */}
           <div className="tour-guides">
             <h2>Meet Our Tour Guides</h2>
-            <div className="card">
-              <img src="https://via.placeholder.com/150" alt="Tour Guide" />
-              <h3>Alice Smith</h3>
-              <p>Experienced in Nature Tours</p>
-              <button>View Profile</button>
+            <div className="grid grid-cols-1 gap-1  md:grid-cols-3 ">
+              {packages.map((item, index) => {
+                return <PackageCard key={index} info={item} />;
+              })}
             </div>
             {/* Add more guide cards as needed */}
           </div>
