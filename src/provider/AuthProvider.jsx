@@ -79,6 +79,7 @@ const AuthProvider = ({ children }) => {
   /// create account with email and password and name and photoURL
   const createAccount = (email, password, name, photoURL) => {
     setLoading(true);
+    
     return new Promise((resolve, reject) => {
       if (!email) {
         setLoading(false);
