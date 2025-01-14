@@ -3,21 +3,33 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css"; // Default styles for tabs
 import axios from "axios";
 import HOST from "../../constant/HOST";
-// const HOST from "../../constant/HOST.jsx";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import PackageCard from "../Shared/PackageCard";
+
 const TourismTabs = () => {
-  const [data, setData] = React.useState([]);
+  const [packages, setPackages] = React.useState([]);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
-    const fetchData = axios.get(`${HOST}/api/samples`).then((res) => {
-      console.log(res.data);
-      setData(res.data);
-    });
+    const fetchPackages = async () => {
+      try {
+        const res = await axios.get(`${HOST}/api/samples/`);
+        console.log("Packages:", res.data);
+        setPackages(res.data);
+      } catch (error) {
+        console.error("Error fetching packages:", error);
+      }
+    };
+    fetchPackages();
   }, []);
+
+  const handleViewDetails = (packageId) => {
+    navigate(`/package/${packageId}`);
+  };
 
   return (
     <div className="tabs-container">
       <Tabs>
-        {data.length}
         {/* Tab Headers */}
         <TabList>
           <Tab>Our Packages</Tab>
@@ -29,14 +41,11 @@ const TourismTabs = () => {
           {/* Content for "Our Packages" */}
           <div className="packages">
             <h2>Our Packages</h2>
-            <div className="card">
-              <img src="https://via.placeholder.com/150" alt="Tour Package" />
-              <h3>Sundarbans Adventure</h3>
-              <p>Type: Nature</p>
-              <p>Price: $150</p>
-              <button>View Details</button>
+            <div className="grid grid-cols-1 gap-1  md:grid-cols-3 ">
+              {packages.map((item, index) => {
+                return <PackageCard key={index} info={item} />;
+              })}
             </div>
-            {/* Add more package cards as needed */}
           </div>
         </TabPanel>
 
