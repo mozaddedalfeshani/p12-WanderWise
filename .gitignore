@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+WanderWise\src\firebase.init.js
+WanderWise\firebase.init.js

@@ -4,7 +4,7 @@ import NavBar from "../Components/Shared/NavBar";
 
 const ClientLayout = () => {
   return (
-    <div>
+    <div className="font-roboto">
       <NavBar />
       <Outlet />
     </div>
