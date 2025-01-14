@@ -5,7 +5,7 @@ const PackageCard = ({ info }) => {
   // console.log(info.details);
   return (
     <div>
-      <div className="card bg-base-100 w-96 shadow-xl overflow-hidden h-[410px]">
+      <div className="card bg-base-100 shadow-xl overflow-hidden h-[410px]">
         {" "}
         {/* Set fixed height */}
         <figure>

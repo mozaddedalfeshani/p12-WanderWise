@@ -55,7 +55,7 @@ const TourismTabs = () => {
             <h2 className="text-center font-bold my-10 text-3xl ">
               Our Packages
             </h2>
-            <div className="grid grid-cols-1 gap-1  md:grid-cols-3 ">
+            <div className="grid grid-cols-1 gap-5  md:grid-cols-2 lg:grid-cols-3 ">
               {packages.map((item, index) => {
                 return <PackageCard key={index} info={item} />;
               })}
@@ -69,10 +69,10 @@ const TourismTabs = () => {
             <h2 className="text-center font-bold my-10 text-3xl ">
               Meet Our Tour Guides
             </h2>
-            <div className="grid grid-cols-1 gap-1  md:grid-cols-3 ">
+            <div className="grid grid-cols-1 gap-4  md:grid-cols-2 lg:grid-cols-3 ">
               {tourGuides.map((item, index) => {
                 return (
-                  <div key={index} className="card bg-base-100 w-96 shadow-xl">
+                  <div key={index} className="card bg-base-100  shadow-xl">
                     <figure className="px-10 pt-10">
                       <img
                         src={item.image}
