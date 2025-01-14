@@ -8,12 +8,16 @@ const TourismTabs = () => {
   const [data, setData] = React.useState([]);
 
   useEffect(() => {
-    const fetchData = axios.get(`${HOST}/api/samples`);
-  });
+    const fetchData = axios.get(`${HOST}/api/samples`).then((res) => {
+      console.log(res.data);
+      setData(res.data);
+    });
+  }, []);
 
   return (
     <div className="tabs-container">
       <Tabs>
+        {data.length}
         {/* Tab Headers */}
         <TabList>
           <Tab>Our Packages</Tab>
