@@ -10,7 +10,7 @@ const Auth = () => {
     useContext(AuthContext);
   const handleGoogleLogin = async () => {
     await LoginWithGoogle();
-    console.log("Google login", user);
+    // console.log("Google login", user);
   };
 
   // login with email and password
@@ -20,10 +20,10 @@ const Auth = () => {
     const password = e.target[1].value;
     try {
       await signInUser(email, password);
-      console.log("Email login", user);
+      // console.log("Email login", user);
       toast("Login successful", { type: "success" });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

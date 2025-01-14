@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import Auth from "../pages/Auth/Auth";
 import Register from "../pages/Auth/Register";
 import Community from "../pages/community/Community";
+import TourGuideInfo from "../pages/TourGuideInfo"; // Import the new component
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,15 @@ const router = createBrowserRouter([
       {
         path: "community",
         element: <Community />,
+      },
+      {
+        path: "about",
+        element: <div>About</div>,
+      },
+
+      {
+        path: "/tgInfo/:id",
+        element: <TourGuideInfo />, // Use the new component
       },
     ],
   },

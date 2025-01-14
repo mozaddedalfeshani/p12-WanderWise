@@ -17,7 +17,15 @@ const NavBar = () => {
     setTheme(newTheme);
   };
 
-  const { user } = useContext(AuthContext);
+  const { user, LogOut } = useContext(AuthContext);
+  // console.log(user);
+  const handleLogout = async () => {
+    try {
+      await LogOut();
+    } catch (error) {
+      // console.log(error);
+    }
+  };
   const items = [
     <li
       key="home"
@@ -102,9 +110,15 @@ const NavBar = () => {
           <button onClick={toggleTheme} className="btn btn-ghost rounded-full">
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
-          <Link to="/login" className="btn">
-            Login
-          </Link>
+          {user ? (
+            <button className="btn " onClick={handleLogout}>
+              Logout
+            </button>
+          ) : (
+            <Link to="/login" className="btn">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

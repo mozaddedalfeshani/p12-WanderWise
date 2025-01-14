@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PackageCard = ({ info }) => {
-  console.log(info.details);
+  // console.log(info.details);
   return (
     <div>
       <div className="card bg-base-100 w-96 shadow-xl overflow-hidden h-[410px]">

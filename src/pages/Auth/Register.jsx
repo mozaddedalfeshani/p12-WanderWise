@@ -33,12 +33,12 @@ const Register = () => {
     const imageUrl = e.target[1].value;
     try {
       await createAccount(email, password, name, imageUrl);
-      console.log("Email login", user);
+    //   console.log("Email login", user);
       toast.success("Registration successful", {
         pauseOnHover: false,
       });
     } catch (error) {
-      console.log(error);
+    //   console.log(error);
       toast.error("Registration failed: " + error);
     }
   };

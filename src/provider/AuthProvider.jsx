@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       return result.user;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setLoading(false);
     }
   };
@@ -69,7 +69,7 @@ const AuthProvider = ({ children }) => {
         })
         .catch((error) => {
           const errorMessage = error.message;
-          console.error("Error signing in: " + errorMessage); // Log wrong credentials
+          // console.error("Error signing in: " + errorMessage); // Log wrong credentials
 
           reject(errorMessage); // Reject the promise with the error message
           setLoading(false); // Set loading to false when authentication is unsuccessful
