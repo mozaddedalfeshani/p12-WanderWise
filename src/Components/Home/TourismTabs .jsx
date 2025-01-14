@@ -40,7 +40,7 @@ const TourismTabs = () => {
   };
 
   return (
-    <div className="tabs-container">
+    <div className="tabs-container my-5">
       <Tabs>
         {/* Tab Headers */}
         <TabList>
@@ -66,7 +66,9 @@ const TourismTabs = () => {
         <TabPanel>
           {/* Content for "Meet Our Tour Guides" */}
           <div className="tour-guides">
-            <h2>Meet Our Tour Guides</h2>
+            <h2 className="text-center font-bold my-10 text-3xl ">
+              Meet Our Tour Guides
+            </h2>
             <div className="grid grid-cols-1 gap-1  md:grid-cols-3 ">
               {tourGuides.map((item, index) => {
                 return (

@@ -2,9 +2,7 @@ import React from "react";
 
 const OverviewSection = () => {
   return (
-    <div
-      className="p-6  flex flex-col md:flex-row
-    items-center justify-around gap-6 rounded-lg shadow-lg">
+    <div className="p-6 flex flex-col md:flex-row items-center justify-around gap-6 rounded-lg shadow-lg">
       <div className="p-5 card rounded-lg">
         <h2 className="text-2xl font-bold mb-4">Welcome to WanderWise</h2>
         <p className="mb-6">
@@ -12,11 +10,11 @@ const OverviewSection = () => {
           and videos.
         </p>
       </div>
-      <div className="p-5">
+      <div className="p-5 w-full md:w-1/2">
         <h3 className="text-xl font-semibold mb-4">Explore Our Videos</h3>
         <div className="flex justify-center">
           <iframe
-            width="560"
+            width="100%"
             height="315"
             src="https://www.youtube.com/embed/X5uxoBv-myU"
             title="YouTube video player"
