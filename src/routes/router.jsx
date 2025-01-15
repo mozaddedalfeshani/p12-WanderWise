@@ -5,6 +5,7 @@ import Auth from "../pages/Auth/Auth";
 import Register from "../pages/Auth/Register";
 import Community from "../pages/community/Community";
 import TourGuideInfo from "../Components/Home/TourGuideInfo";
+import TripsPage from "../pages/Trips/TripsPage";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/trips",
+        element: <TripsPage />,
       },
 
       {

@@ -2,12 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PackageCard = ({ info }) => {
-  // console.log(info.details);
+  console.log(info);
   return (
     <div>
       <div className="card bg-base-100 shadow-xl overflow-hidden h-[410px]">
-        {" "}
-        {/* Set fixed height */}
         <figure>
           <img
             src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -21,13 +19,13 @@ const PackageCard = ({ info }) => {
           </h2>
           <p>{info.details}</p>
           <div className="card-actions justify-end">
-            {info.tourGuides.map((guide, index) => {
+            {/* {info.tourGuides.map((guide, index) => {
               return (
                 <div key={index} className="badge badge-outline">
                   {guide}
                 </div>
               );
-            })}
+            })} */}
           </div>
         </div>
         <div className="card-actions justify-center">
