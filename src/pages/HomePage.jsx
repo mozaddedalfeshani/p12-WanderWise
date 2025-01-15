@@ -4,6 +4,7 @@ import CoverflowSlider from "../Components/Home/CoverflowSlider";
 import OverviewSection from "../Components/Home/OverviewSection";
 import TourismTabs from "../Components/Home/TourismTabs ";
 import { Helmet } from "react-helmet-async";
+import HomeStories from "../Components/Home/HomeStories";
 const HomePage = () => {
   return (
     <div>
@@ -14,6 +15,8 @@ const HomePage = () => {
         <CoverflowSlider />
         <OverviewSection />
         <TourismTabs />
+
+        <HomeStories />
       </div>
       <Footer />
     </div>

@@ -4,7 +4,7 @@ import { PiMountainsDuotone } from "react-icons/pi";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer footer-center card shadow-sm text-primary-content p-10">
+      <footer className="footer footer-center card shadow-sm p-10">
         <aside>
           <PiMountainsDuotone size={50} className="inline-block fill-current" />
           <p className="font-bold">
