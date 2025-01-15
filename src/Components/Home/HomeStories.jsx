@@ -2,6 +2,8 @@ import React from "react";
 import HOST from "../../constant/HOST";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { CiShare2 } from "react-icons/ci";
+import { FacebookShareButton, FacebookIcon } from "react-share";
 
 const HomeStories = () => {
   const [stories, setStories] = React.useState([]);
@@ -36,13 +38,20 @@ const HomeStories = () => {
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                 <p>{item.content}</p>
               </div>
+              <div className="flex justify-end p-4">
+                <FacebookShareButton
+                  url={window.location.href}
+                  className="btn px-5 btn-outline">
+                  <CiShare2 /> Share
+                </FacebookShareButton>
+              </div>
             </div>
           );
         })}
       </div>
       {/* More Stories button  */}
       <Link
-        to="/"
+        to="/community"
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
         More Stories
       </Link>

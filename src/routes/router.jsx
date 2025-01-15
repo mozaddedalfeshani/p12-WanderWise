@@ -15,10 +15,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
       },
-      {
-        path: "/community",
-        element: <div>Community</div>,
-      },
+
       {
         path: "/contact",
         element: <div>Contact</div>,
@@ -32,7 +29,7 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "community",
+        path: "/community",
         element: <Community />,
       },
       {
