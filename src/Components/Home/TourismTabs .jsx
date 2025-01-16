@@ -77,7 +77,7 @@ const TourismTabs = () => {
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="rounded-xl"
+                        className="rounded-xl w-full h-auto"
                       />
                     </figure>
                     <div className="card-body items-center text-center">

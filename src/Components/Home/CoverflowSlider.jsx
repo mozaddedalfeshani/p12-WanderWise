@@ -4,7 +4,6 @@ import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules"; // Impor
 import "swiper/swiper-bundle.css";
 
 function CoverflowSlider({ images }) {
-  console.log("images", images);
   return (
     <div className="w-full mx-auto my-8">
       {" "}

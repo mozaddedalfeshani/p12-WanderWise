@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 const TCard = ({ info }) => {
   return (
     <div>
-      <h1>{info._id}</h1>
-      <div className="card bg-base-100 w-96 shadow-xl">
+      <div className="card bg-base-100 w-96 shadow-xl overflow-hidden">
         <figure>
-          <img src={info.images[0]} alt="Shoes" />
+          <img src={info.images[0]} alt={info.image} className="w-full" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">

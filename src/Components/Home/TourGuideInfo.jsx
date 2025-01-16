@@ -22,15 +22,23 @@ const TourGuideInfo = () => {
   }, [id]);
 
   if (!tourGuide) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex min-h-screen justify-center items-center ">
+        Loading...
+      </div>
+    );
   }
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <div className="card bg-base-100 w-96 shadow-xl">
         <div className="card-body">
-          <figure>
-            <img src={tourGuide.image} alt={tourGuide.name} />
+          <figure className="w-full h-64">
+            <img
+              src={tourGuide.image}
+              alt={tourGuide.name}
+              className="object-cover w-full h-full"
+            />
           </figure>
           <h2 className="card-title">{tourGuide.name}</h2>
           <p>{tourGuide.profile}</p>

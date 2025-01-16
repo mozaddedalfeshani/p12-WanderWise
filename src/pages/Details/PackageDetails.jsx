@@ -13,7 +13,7 @@ import { AuthContext } from "../../provider/AuthProvider"; // Correct import of 
 
 const PackageDetails = () => {
   const { id } = useParams();
-  console.log(id);
+
   const [packageDetails, setPackageDetails] = React.useState({});
   const [tourGuides, setTourGuides] = React.useState([]);
   const { user } = useContext(AuthContext); // Use useContext to access user state
@@ -21,6 +21,16 @@ const PackageDetails = () => {
   const [tourDate, setTourDate] = useState(new Date());
   const [selectedGuide, setSelectedGuide] = useState("");
   const navigate = useNavigate(); // Initialize useNavigate
+
+  const getBookingInfo = () => ({
+    packageName: packageDetails.title,
+    touristName: user?.displayName || "",
+    touristEmail: user?.email || "",
+    touristImage: user?.photoURL || "",
+    price: packageDetails.price,
+    tourDate,
+    tourGuideName: selectedGuide,
+  });
 
   const openModal = () => {
     if (user) {
@@ -37,23 +47,15 @@ const PackageDetails = () => {
       console.error("User is not logged in");
       return;
     }
-    const bookingInfo = {
-      packageName: packageDetails.title,
-      touristName: user.displayName,
-      touristEmail: user.email,
-      touristImage: user.photoURL,
-      price: packageDetails.price,
-      tourDate,
-      tourGuideName: selectedGuide,
-    };
-    console.log(bookingInfo);
+    const bookingInfo = getBookingInfo();
+    console.log("booking info", bookingInfo);
     closeModal();
   };
 
   React.useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(`${HOST}/packages/${id}`);
-      console.log(res.data);
+      // console.log(res.data);
       setPackageDetails(res.data);
     };
 
@@ -69,15 +71,7 @@ const PackageDetails = () => {
 
   React.useEffect(() => {
     if (modalIsOpen) {
-      const modalInfo = {
-        packageName: packageDetails.title,
-        touristName: user?.displayName || "",
-        touristEmail: user?.email || "",
-        touristImage: user?.photoURL || "",
-        price: packageDetails.price,
-        tourDate,
-        tourGuideName: selectedGuide,
-      };
+      const modalInfo = getBookingInfo();
       console.log("Modal Information:", modalInfo);
     }
   }, [modalIsOpen, packageDetails, user, tourDate, selectedGuide]);
@@ -129,7 +123,7 @@ const PackageDetails = () => {
         contentLabel="Booking Form"
         className="modal modal-open"
         overlayClassName="modal-overlay"
-        appElement={document.getElementById('root')} // Set appElement directly
+        appElement={document.getElementById("root")} // Set appElement directly
       >
         <div className="modal-box">
           <h2 className="text-2xl mb-4">Book Now</h2>
@@ -195,13 +189,16 @@ const PackageDetails = () => {
                 className="select select-bordered w-full">
                 <option value="">Select a guide</option>
                 {tourGuides.map((guide) => (
-                  <option key={guide.id} value={guide.name}>
+                  <option key={guide._id} value={guide.name}>
                     {guide.name}
                   </option>
                 ))}
               </select>
             </div>
-            <button type="submit" className="btn btn-primary w-full">
+            <button
+              type="submit"
+              className="btn btn-primary w-full"
+              disabled={!selectedGuide}>
               Book Now
             </button>
           </form>

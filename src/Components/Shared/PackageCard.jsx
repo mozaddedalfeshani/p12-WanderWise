@@ -5,12 +5,17 @@ const PackageCard = ({ info }) => {
   console.log(info);
   return (
     <div>
-      <div className="card bg-base-100 shadow-xl overflow-hidden h-[410px]">
-        <figure>
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="Shoes"
-          />
+      <div className="card bg-base-100 shadow-xl overflow-hidden h-auto md:h-[410px]">
+        <figure className="w-full h-64 md:h-80 bg-gray-200 flex items-center justify-center">
+          {info.images[0] ? (
+            <img
+              src={info.images[0]}
+              alt="Shoes"
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="text-gray-500">No Image Available</div>
+          )}
         </figure>
         <div className="card-body">
           <h2 className="card-title">
