@@ -5,7 +5,8 @@ import Auth from "../pages/Auth/Auth";
 import Register from "../pages/Auth/Register";
 import Community from "../pages/community/Community";
 import TourGuideInfo from "../Components/Home/TourGuideInfo";
-import TripsPage from "../pages/Trips/TripsPage";
+import TripsPages from "../pages/Trips/TripsPage";
+import PackageDetails from "../pages/Details/PackageDetails";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/trips",
-        element: <TripsPage />,
+        element: <TripsPages />,
       },
 
       {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/tgInfo/:id",
         element: <TourGuideInfo />, // Use the new component
+      },
+      {
+        path: "/package/:id",
+        element: <PackageDetails />,
       },
     ],
   },
