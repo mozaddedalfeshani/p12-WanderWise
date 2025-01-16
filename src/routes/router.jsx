@@ -8,6 +8,7 @@ import TourGuideInfo from "../Components/Home/TourGuideInfo";
 import TripsPages from "../pages/Trips/TripsPage";
 import PackageDetails from "../pages/Details/PackageDetails";
 import TgDetails from "../Components/guiders/TgDetails";
+import ClientDashboard from "../pages/dashboard/Client/ClientDashboard";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,6 @@ const router = createBrowserRouter([
         path: "/trips",
         element: <TripsPages />,
       },
-
       {
         path: "/contact",
         element: <div>Contact</div>,
@@ -43,10 +43,9 @@ const router = createBrowserRouter([
         path: "about",
         element: <div>About</div>,
       },
-
       {
         path: "/tgInfo/:id",
-        element: <TourGuideInfo />, // Use the new component
+        element: <TourGuideInfo />,
       },
       {
         path: "/package/:id",
@@ -55,6 +54,32 @@ const router = createBrowserRouter([
       {
         path: "/tgProfile/:id",
         element: <TgDetails />,
+      },
+      {
+        path: "/dashboard",
+        element: <ClientDashboard />,
+        children: [
+          {
+            path: "manageProfile",
+            element: <h1>Manage Profile</h1>,
+          },
+          {
+            path: "myBooking",
+            element: <h2>My Booking</h2>,
+          },
+          {
+            path: "manageStories",
+            element: <h2>Manage Stories</h2>,
+          },
+          {
+            path: "addStories",
+            element: <h2>Add Stories</h2>,
+          },
+          {
+            path: "joinAsTourGuide",
+            element: <h2>Join As Tour Guide</h2>,
+          },
+        ],
       },
     ],
   },
