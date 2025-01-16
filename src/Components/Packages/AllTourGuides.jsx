@@ -24,7 +24,7 @@ const AllTourGuides = ({ tourGuide }) => {
         </div>
       </div>
       <div className="card-actions justify-center my-2 w-full">
-        <Link to="#" className="btn btn-primary">
+        <Link to={`/tgProfile/${tourGuide._id}`} className="btn btn-primary">
           See Details
         </Link>
       </div>

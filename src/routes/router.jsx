@@ -7,6 +7,7 @@ import Community from "../pages/community/Community";
 import TourGuideInfo from "../Components/Home/TourGuideInfo";
 import TripsPages from "../pages/Trips/TripsPage";
 import PackageDetails from "../pages/Details/PackageDetails";
+import TgDetails from "../Components/guiders/TgDetails";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/package/:id",
         element: <PackageDetails />,
+      },
+      {
+        path: "/tgProfile/:id",
+        element: <TgDetails />,
       },
     ],
   },
