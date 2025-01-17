@@ -9,6 +9,7 @@ import TripsPages from "../pages/Trips/TripsPage";
 import PackageDetails from "../pages/Details/PackageDetails";
 import TgDetails from "../Components/guiders/TgDetails";
 import ClientDashboard from "../pages/dashboard/Client/ClientDashboard";
+import ManageProfile from "../Components/Dashboard/Client/ManageProfile";
 
 const router = createBrowserRouter([
   {
@@ -56,13 +57,13 @@ const router = createBrowserRouter([
         element: <TgDetails />,
       },
       {
-        path: "/dashboard/:userEmail",
+        path: "/dashboard",
         element: <ClientDashboard />,
 
         children: [
           {
             path: "manageProfile",
-            element: <h1>Manage Profile</h1>,
+            element: <ManageProfile />,
           },
           {
             path: "myBooking",

@@ -12,7 +12,7 @@ const Sidebar = () => {
   return (
     <div>
       <button
-        className="md:hidden btn btn-primary rounded-sm m-2"
+        className="md:hidden btn btn-primary rounded-sm "
         onClick={toggleSidebar}>
         {isOpen ? "Close" : "Open"} Menu
       </button>
@@ -23,34 +23,38 @@ const Sidebar = () => {
         <h2>Wander Wise</h2>
         <nav>
           <ul className="flex flex-col">
-            <li className="btn btn-primary m-2 mx-0 rounded-sm flex-none">
+            <li className="btn btn-primary  mx-0 rounded-sm flex-none">
               <NavLink
                 to="/dashboard/manageProfile"
-                className={({ isActive }) => isActive ? "active" : ""}>
+                className={({ isActive }) => (isActive ? "active" : "")}>
                 Manange Profile
               </NavLink>
             </li>
-            <li className="btn btn-primary m-2 mx-0 rounded-sm flex-none">
-              <NavLink to="/dashboard/myBooking" className={({ isActive }) => isActive ? "active" : ""}>
+            <li className="btn btn-primary  mx-0 rounded-sm flex-none">
+              <NavLink
+                to="/dashboard/myBooking"
+                className={({ isActive }) => (isActive ? "active" : "")}>
                 My Booking
               </NavLink>
             </li>
-            <li className="btn btn-primary m-2 mx-0 rounded-sm flex-none">
+            <li className="btn btn-primary  mx-0 rounded-sm flex-none">
               <NavLink
                 to="/dashboard/manageStories"
-                className={({ isActive }) => isActive ? "active" : ""}>
+                className={({ isActive }) => (isActive ? "active" : "")}>
                 Manage Stories
               </NavLink>
             </li>
-            <li className="btn btn-primary m-2 mx-0 rounded-sm flex-none">
-              <NavLink to="/dashboard/addStories" className={({ isActive }) => isActive ? "active" : ""}>
+            <li className="btn btn-primary  mx-0 rounded-sm flex-none">
+              <NavLink
+                to="/dashboard/addStories"
+                className={({ isActive }) => (isActive ? "active" : "")}>
                 Add Stories
               </NavLink>
             </li>
-            <li className="btn btn-primary m-2 mx-0 rounded-sm flex-none">
+            <li className="btn btn-primary  mx-0 rounded-sm flex-none">
               <NavLink
                 to="/dashboard/joinAsTourGuide"
-                className={({ isActive }) => isActive ? "active" : ""}>
+                className={({ isActive }) => (isActive ? "active" : "")}>
                 Join as tour guide
               </NavLink>
             </li>

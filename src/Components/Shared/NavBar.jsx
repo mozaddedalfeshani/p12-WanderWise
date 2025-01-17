@@ -61,7 +61,7 @@ const NavBar = () => {
         className={`font-roboto font-medium ${
           theme === "dark" ? "text-white" : "text-black"
         }`}>
-        <Link to={`/dashboard/${user.email}`}>Dashboard</Link>
+        <Link to={`/dashboard`}>Dashboard</Link>
       </li>
     ),
   ];

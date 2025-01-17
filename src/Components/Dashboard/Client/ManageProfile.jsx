@@ -1,10 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import Sidebar from "./Sidebar";
-import { Outlet, useParams } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 import { toast, ToastContainer } from "react-toastify";
 
-const ClientDashboard = () => {
+const ManageProfile = () => {
   const { user } = useContext(AuthContext);
   if (!user) {
     return <div>User not logged in</div>;
@@ -14,16 +13,15 @@ const ClientDashboard = () => {
     toast.success(`Welcome ${user.displayName} `);
   }, []);
   return (
-    <div className="flex flex-row justify-start items-start">
-      <div className="flex ">
-        <Sidebar />
-        <div className="">
-          <Outlet />
-        </div>
-      </div>
+    <div>
+      <Helmet>
+        <title>Manage Profile</title>
+      </Helmet>
+      {toast.success("Welcome to your profile")}
+      This {user.email}
       <ToastContainer />
     </div>
   );
 };
 
-export default ClientDashboard;
+export default ManageProfile;
