@@ -56,8 +56,9 @@ const router = createBrowserRouter([
         element: <TgDetails />,
       },
       {
-        path: "/dashboard",
+        path: "/dashboard/:userEmail",
         element: <ClientDashboard />,
+
         children: [
           {
             path: "manageProfile",
