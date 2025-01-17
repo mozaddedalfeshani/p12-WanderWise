@@ -52,8 +52,6 @@ const Register = () => {
         },
       });
 
-      console.log(imageResponse.data);
-
       // Get the image URL from ImgBB response
       const imageUrl = imageResponse.data.data.url;
 
@@ -64,10 +62,15 @@ const Register = () => {
         password: password,
         iconUrl: imageUrl, // Use the image URL returned from ImgBB
       };
-      console.log(data);
 
       // Send registration data to backend (you should replace this with your backend API)
-      await axios.post(`${HOST}/client/register`, data);
+      await axios.post(`${HOST}/client/register`, data).then((res) => {
+        console.log(res.data.token);
+        if (res.data.token && res.data.success) {
+          localStorage.setItem("token", res.data.token);
+          createAccount(email, password, name, imageUrl);
+        }
+      });
 
       toast.success("Registration successful", {
         pauseOnHover: false,
