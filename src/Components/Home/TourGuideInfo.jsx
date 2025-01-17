@@ -13,6 +13,7 @@ const TourGuideInfo = () => {
     const fetchTourGuide = async () => {
       try {
         const res = await axios.get(`${HOST}/api/tg/${id}`);
+        console.log(res.data);
         setTourGuide(res.data);
       } catch (error) {
         console.error("Error fetching tour guide info:", error);

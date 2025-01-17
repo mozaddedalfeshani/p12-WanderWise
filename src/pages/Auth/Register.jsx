@@ -4,6 +4,8 @@ import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
+import HOST from "../../constant/HOST";
 
 const Register = () => {
   const { user, LoginWithGoogle, loading, createAccount } =
@@ -25,26 +27,61 @@ const Register = () => {
     console.log("Google login", user);
   };
 
+  const imageHostingKey = "79dae6d8e77e9a9a901c03b0dfa39f1d";
+  const imageBB = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
+
   const handleRegister = async (e) => {
     e.preventDefault();
+
     const email = e.target[2].value;
     const password = e.target[3].value;
     const name = e.target[0].value;
-    const imageUrl = e.target[1].value;
+    const imageFile = e.target[1].files[0];
+
     try {
-      await createAccount(email, password, name, imageUrl);
-    //   console.log("Email login", user);
+      console.log(email, password, name, imageFile);
+
+      // Create FormData for the image upload
+      const formData = new FormData();
+      formData.append("image", imageFile);
+
+      // Upload the image to ImgBB
+      const imageResponse = await axios.post(imageBB, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      console.log(imageResponse.data);
+
+      // Get the image URL from ImgBB response
+      const imageUrl = imageResponse.data.data.url;
+
+      // Prepare data for backend
+      const data = {
+        email: email,
+        name: name,
+        password: password,
+        iconUrl: imageUrl, // Use the image URL returned from ImgBB
+      };
+      console.log(data);
+
+      // Send registration data to backend (you should replace this with your backend API)
+      await axios.post(`${HOST}/client/register`, data);
+
       toast.success("Registration successful", {
         pauseOnHover: false,
       });
     } catch (error) {
-    //   console.log(error);
-      toast.error("Registration failed: " + error);
+      toast.error(
+        "Registration failed: " +
+          (error.response?.data?.message || error.message)
+      );
     }
   };
 
   return (
-    <div className="container mx-auto card  p-4 flex flex-col justify-center items-center min-h-screen">
+    <div className="container mx-auto card p-4 flex flex-col justify-center items-center min-h-screen">
       <Helmet>
         <title>WanderWise | Register</title>
       </Helmet>
@@ -66,14 +103,9 @@ const Register = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Image URL</span>
+                <span className="label-text">Image</span>
               </label>
-              <input
-                type="text"
-                placeholder="image URL"
-                className="input input-bordered"
-                required
-              />
+              <input type="file" className="input input-bordered" required />
             </div>
             <div className="form-control">
               <label className="label">
