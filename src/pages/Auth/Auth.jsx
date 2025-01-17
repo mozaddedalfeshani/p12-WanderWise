@@ -19,8 +19,13 @@ const Auth = () => {
     const email = e.target[0].value;
     const password = e.target[1].value;
     try {
-      await signInUser(email, password);
-      // console.log("Email login", user);
+      await signInUser(email, password).then((user) => {
+        toast(`Welcome ${user.displayName}`, {
+          type: "success",
+          hideProgressBar: true,
+        });
+      });
+
       toast("Login successful", { type: "success" });
     } catch (error) {
       // console.log(error);

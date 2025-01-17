@@ -11,8 +11,10 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../../firebase.init";
-import { set } from "react-hook-form";
+
 import { toast } from "react-toastify"; // Import toast
+import axios from "axios";
+import HOST from "../constant/HOST";
 
 // create sign in with google provider
 const googleProvider = new GoogleAuthProvider();
@@ -33,15 +35,29 @@ const AuthProvider = ({ children }) => {
     };
   }, [auth]);
 
+  // login with google
   const LoginWithGoogle = async () => {
     setLoading(true);
     try {
+      // Await the sign-in result
       const result = await signInWithPopup(auth, googleProvider);
+
+      // Set user state
       setUser(result.user);
+
+      // Send user data to the backend
+      await axios.post(`${HOST}/client/register`, {
+        email: result.user.email,
+        name: result.user.displayName,
+        password: result.user.email, // Use email as a placeholder password
+        iconUrl: result.user.photoURL, // Use iconUrl to match backend expectations
+      });
+
+      console.log("User signed in and registered: ", result.user.photoURL);
       setLoading(false);
       return result.user;
     } catch (error) {
-      // console.log(error);
+      console.error("Google login error:", error);
       setLoading(false);
     }
   };
@@ -62,10 +78,12 @@ const AuthProvider = ({ children }) => {
       signInWithEmailAndPassword(auth, email, password)
         .then((result) => {
           setUser(result.user); // Set the user state with the authenticated user
+          console.log("User signed in: ", result.user); // Log the user data
 
           resolve(result.user); // Resolve the promise with the user data
 
           setLoading(false); // Set loading to false when authentication is successful
+          return result.user;
         })
         .catch((error) => {
           const errorMessage = error.message;
