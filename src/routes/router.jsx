@@ -9,7 +9,10 @@ import TripsPages from "../pages/Trips/TripsPage";
 import PackageDetails from "../pages/Details/PackageDetails";
 import TgDetails from "../Components/guiders/TgDetails";
 import ClientDashboard from "../pages/dashboard/Client/ClientDashboard";
-import ManageProfile from "../Components/Dashboard/Client/ManageProfile";
+import ManageProfile from "../Components/Dashboard/tourist/ManageProfile";
+import AssignedTour from "../Components/Dashboard/tourist/AssignedTour";
+import ManageStories from "../Components/Dashboard/tourist/ManageStories";
+import AddStories from "../Components/Dashboard/tourist/AddStories";
 
 const router = createBrowserRouter([
   {
@@ -67,15 +70,15 @@ const router = createBrowserRouter([
           },
           {
             path: "myBooking",
-            element: <h2>My Booking</h2>,
+            element: <AssignedTour />,
           },
           {
             path: "manageStories",
-            element: <h2>Manage Stories</h2>,
+            element: <ManageStories />,
           },
           {
             path: "addStories",
-            element: <h2>Add Stories</h2>,
+            element: <AddStories />,
           },
           {
             path: "joinAsTourGuide",

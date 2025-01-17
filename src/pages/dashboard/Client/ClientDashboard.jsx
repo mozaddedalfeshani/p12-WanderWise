@@ -6,13 +6,18 @@ import { toast, ToastContainer } from "react-toastify";
 
 const ClientDashboard = () => {
   const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    // show toast message
+    if (user) {
+      toast.success(`Welcome ${user.displayName} `);
+    }
+  }, [user]);
+
   if (!user) {
     return <div>User not logged in</div>;
   }
-  useEffect(() => {
-    // show toast message
-    toast.success(`Welcome ${user.displayName} `);
-  }, []);
+
   return (
     <div className="flex flex-row justify-start items-start">
       <div className="flex ">
