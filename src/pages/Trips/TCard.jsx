@@ -6,7 +6,7 @@ const TCard = ({ info }) => {
     <div>
       <div className="card bg-base-100 w-96 shadow-xl overflow-hidden">
         <figure>
-          <img src={info.images[0]} alt={info.image} className="w-full" />
+          <img src={info.images[0]} alt={info.title} className="w-full" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
@@ -16,7 +16,7 @@ const TCard = ({ info }) => {
           <p>{info.details}</p>
           <div className="card-actions justify-end">
             <Link className="btn btn-outline" to={`/package/${info._id}`}>
-              View Details{" "}
+              View Details
             </Link>
           </div>
         </div>
