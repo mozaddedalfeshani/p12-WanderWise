@@ -8,16 +8,12 @@ const ManageProfile = () => {
   if (!user) {
     return <div>User not logged in</div>;
   }
-  useEffect(() => {
-    // show toast message
-    toast.success(`Welcome ${user.displayName} `);
-  }, []);
+
   return (
     <div>
       <Helmet>
         <title>Manage Profile</title>
       </Helmet>
-      {toast.success("Welcome to your profile")}
       This {user.email}
       <ToastContainer />
     </div>
