@@ -39,6 +39,9 @@ const TourismTabs = () => {
     navigate(`/package/${packageId}`);
   };
 
+  if (packages.length === 0 || tourGuides.length === 0) {
+    return <h2>Loading...</h2>;
+  }
   return (
     <div className="tabs-container my-5">
       <Tabs>
@@ -84,13 +87,14 @@ const TourismTabs = () => {
                       <h2 className="card-title">{item.name}</h2>
                       <p>{item.profile}</p>
                       <div className="card-actions justify-end">
-                        {item.languages.map((lang, index) => {
-                          return (
-                            <span key={index} className="badge ">
-                              {lang}
-                            </span>
-                          );
-                        })}
+                        {item.languages &&
+                          item.languages.map((lang, index) => {
+                            return (
+                              <span key={index} className="badge ">
+                                {lang}
+                              </span>
+                            );
+                          })}
                       </div>
                     </div>
                     <div className="card-actions border-none rounded-none">
