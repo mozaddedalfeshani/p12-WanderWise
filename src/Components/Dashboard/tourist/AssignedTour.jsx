@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import HOST from "../../../constant/HOST";
 import { set } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const AssignedTour = () => {
   const { user } = useContext(AuthContext);
@@ -26,9 +27,44 @@ const AssignedTour = () => {
     fetchData();
   }, []);
 
-  const handleCancel = (id) => {
+  const handleCancel = async (id) => {
     // Implement edit functionality here
     toast.info(`Cancel button clicked${id}`);
+
+    // use swal
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const values = {
+          email: user.email,
+          packageName: booking[id].packageName,
+          tourDate: booking[id].tourDate,
+        };
+        console.log(values);
+        axios
+          .delete(`${HOST}/cancelBooking`, { data: values })
+          .then(async (res) => {
+            await axios.get(`${HOST}/clientinfo/${user.email}`).then((res) => {
+              setClientInfo(res.data);
+              setBooking(res.data.booking);
+              console.log(res.data);
+              console.log(res.data.booking);
+            });
+          });
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
   };
   return (
     <div className="flex items-center justify-center flex-col">
