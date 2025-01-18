@@ -1,19 +1,63 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddStories = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [images, setImages] = useState([]);
+  const navigate = useNavigate();
 
   const handleImageUpload = (event) => {
     const files = Array.from(event.target.files);
-    setImages((prevImages) => [...prevImages, ...files]);
+    setImages((prevImages) => {
+      const updatedImages = [...prevImages, ...files];
+      console.log(updatedImages);
+      return updatedImages;
+    });
   };
-
-  const handleSubmit = (event) => {
+  const imageHostingKey = "79dae6d8e77e9a9a901c03b0dfa39f1d";
+  const imageBB = `https://api.imgbb.com/1/upload?key=${imageHostingKey}`;
+  // This is the function that will be called when the form is submitted
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle form submission logic here
-    console.log({ title, text, images });
+    const title = event.target[0].value;
+    const text = event.target[1].value;
+    const imageFiles = event.target[2].files;
+
+    console.log(title, text, imageFiles);
+
+    try {
+      const imageUrls = await Promise.all(
+        Array.from(imageFiles).map(async (imageFile) => {
+          const formData = new FormData();
+          formData.append("image", imageFile);
+
+          const imageResponse = await axios.post(imageBB, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+
+          return imageResponse.data.data.url;
+        })
+      );
+
+      console.log("Image URLs:", imageUrls);
+      const storyData = {
+        title,
+        text,
+        images: imageUrls,
+      };
+
+      // Send the story data to the server
+      
+
+      // Redirect to manage story route
+      navigate("/dashboard/manageStories");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -40,8 +84,7 @@ const AddStories = () => {
             value={text}
             onChange={(e) => setText(e.target.value)}
             required
-            className="textarea textarea-bordered w-full"
-          ></textarea>
+            className="textarea textarea-bordered w-full"></textarea>
         </div>
         <div className="form-control">
           <label className="label">
@@ -54,7 +97,9 @@ const AddStories = () => {
             className="file-input file-input-bordered w-full"
           />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
       <div className="mt-8">
         <h2 className="text-xl font-semibold">Preview:</h2>
