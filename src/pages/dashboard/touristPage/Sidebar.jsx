@@ -11,7 +11,9 @@ const Sidebar = () => {
 
   return (
     <div>
-      <button className="md:hidden btn  rounded-sm " onClick={toggleSidebar}>
+      <button
+        className="md:hidden btn fixed bottom-4 right-4 rounded-full p-4 shadow-lg bg-blue-500 text-white"
+        onClick={toggleSidebar}>
         {isOpen ? "Close" : "Open"} Menu
       </button>
       <div
