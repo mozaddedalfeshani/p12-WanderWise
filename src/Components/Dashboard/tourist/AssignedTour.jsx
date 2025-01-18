@@ -114,7 +114,7 @@ const AssignedTour = () => {
                       </button>
                     </td>
                     <td>
-                      <Link to="payment">Pay</Link>
+                      <Link to="payment/:price">Pay</Link>
                     </td>
                   </tr>
                 );

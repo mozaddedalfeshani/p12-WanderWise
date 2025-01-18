@@ -83,7 +83,7 @@ const router = createBrowserRouter([
             element: <AddStories />,
           },
           {
-            path: "myBooking/payment",
+            path: "myBooking/payment/:price",
             element: <Payment />,
           },
           {
