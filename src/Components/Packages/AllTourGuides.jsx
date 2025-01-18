@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const AllTourGuides = ({ tourGuide }) => {
   if (!tourGuide) return <h1>Loading...</h1>;
-  console.log(tourGuide);
   return (
     <div className="card bg-base-100 w-96 shadow-xl">
       <figure>

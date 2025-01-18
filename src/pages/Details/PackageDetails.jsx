@@ -10,6 +10,7 @@ import Modal from "react-modal";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../provider/AuthProvider"; // Correct import of AuthContext
+import { toast, ToastContainer } from "react-toastify";
 
 const PackageDetails = () => {
   const { id } = useParams();
@@ -30,6 +31,9 @@ const PackageDetails = () => {
     price: packageDetails.price,
     tourDate,
     tourGuideName: selectedGuide,
+    status: "In Review",
+    tourGuideEmail: tourGuides.find((guide) => guide.name === selectedGuide)
+      ?.email,
   });
 
   const openModal = () => {
@@ -41,7 +45,7 @@ const PackageDetails = () => {
   };
   const closeModal = () => setModalIsOpen(false);
 
-  const handleBooking = (e) => {
+  const handleBooking = async (e) => {
     e.preventDefault();
     if (!user) {
       console.error("User is not logged in");
@@ -49,6 +53,12 @@ const PackageDetails = () => {
     }
     const bookingInfo = getBookingInfo();
     console.log("booking info", bookingInfo);
+    // Send booking info to the server
+    await axios.post(`${HOST}/booking`, bookingInfo).then((res) => {
+      if (res.data.modifiedCount > 0 || res.data.matchedCount > 0) {
+        toast.success("Booking successful");
+      }
+    });
     closeModal();
   };
 
@@ -72,7 +82,6 @@ const PackageDetails = () => {
   React.useEffect(() => {
     if (modalIsOpen) {
       const modalInfo = getBookingInfo();
-      console.log("Modal Information:", modalInfo);
     }
   }, [modalIsOpen, packageDetails, user, tourDate, selectedGuide]);
 
@@ -239,6 +248,7 @@ const PackageDetails = () => {
           </div>
         </div>
       </Modal>
+      <ToastContainer />
     </div>
   );
 };

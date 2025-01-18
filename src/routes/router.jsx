@@ -8,11 +8,12 @@ import TourGuideInfo from "../Components/Home/TourGuideInfo";
 import TripsPages from "../pages/Trips/TripsPage";
 import PackageDetails from "../pages/Details/PackageDetails";
 import TgDetails from "../Components/guiders/TgDetails";
-import ClientDashboard from "../pages/dashboard/Client/ClientDashboard";
+
 import ManageProfile from "../Components/Dashboard/tourist/ManageProfile";
 import AssignedTour from "../Components/Dashboard/tourist/AssignedTour";
 import ManageStories from "../Components/Dashboard/tourist/ManageStories";
 import AddStories from "../Components/Dashboard/tourist/AddStories";
+import ClientDashboard from "../pages/dashboard/touristPage/ClientDashboard";
 
 const router = createBrowserRouter([
   {
