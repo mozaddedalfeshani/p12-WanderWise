@@ -95,7 +95,9 @@ const NavBar = () => {
                 className={`font-roboto font-medium ${
                   theme === "dark" ? "text-white" : "text-black"
                 }`}>
-                <Link to="/login">Login/Register</Link>
+                <button className=" " onClick={handleLogout}>
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
@@ -106,7 +108,7 @@ const NavBar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{items}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end md:flex hidden">
           <button onClick={toggleTheme} className="btn btn-ghost rounded-full">
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
