@@ -6,6 +6,7 @@ import axios from "axios";
 import HOST from "../../../constant/HOST";
 import { set } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const AssignedTour = () => {
   const { user } = useContext(AuthContext);
@@ -113,7 +114,7 @@ const AssignedTour = () => {
                       </button>
                     </td>
                     <td>
-                      <button>Pay</button>
+                      <Link to="payment">Pay</Link>
                     </td>
                   </tr>
                 );

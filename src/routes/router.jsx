@@ -14,6 +14,7 @@ import AssignedTour from "../Components/Dashboard/tourist/AssignedTour";
 import ManageStories from "../Components/Dashboard/tourist/ManageStories";
 import AddStories from "../Components/Dashboard/tourist/AddStories";
 import ClientDashboard from "../pages/dashboard/touristPage/ClientDashboard";
+import Payment from "../Components/payments/Payment";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
           {
             path: "addStories",
             element: <AddStories />,
+          },
+          {
+            path: "myBooking/payment",
+            element: <Payment />,
           },
           {
             path: "joinAsTourGuide",
