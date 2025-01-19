@@ -7,7 +7,7 @@ import { CiShare2 } from "react-icons/ci";
 import { FacebookShareButton, FacebookIcon } from "react-share";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Community = () => {
   const [stories, setStories] = React.useState([]);
@@ -21,11 +21,13 @@ const Community = () => {
     };
     fetchStories();
   }, []);
-
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-
+  const goToRegister = () => {
+    navigate("/login", { state: { pathname: "/community" } });
+  };
   return (
-    <>
+    <Link to="/community">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 mt-5 gap-2 w-full">
         {stories.map((story, index) => (
           <div key={index} className="card shadow-sm p-3 mb-5  rounded">
@@ -83,18 +85,16 @@ const Community = () => {
       {/* create floating button for adding new story  */}
       <div className="fixed bottom-5 right-5">
         {user ? (
-          <button className="btn btn-primary shadow-lg">Add Story</button>
-        ) : (
-          <Link
-            to="/login"
-            state={{ form: "/community" }}
-            className="btn btn-primary shadow-lg">
-            Login to Create Story
+          <Link to="/dashboard/addStories">
+            <div className="btn btn-primary shadow-lg">Add Story</div>
           </Link>
+        ) : (
+          <button onClick={goToRegister} className="btn btn-primary shadow-lg">
+            Login to Create Story
+          </button>
         )}
       </div>
-    </>
+    </Link>
   );
 };
-
 export default Community;
