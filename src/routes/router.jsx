@@ -15,6 +15,7 @@ import ManageStories from "../Components/Dashboard/tourist/ManageStories";
 import AddStories from "../Components/Dashboard/tourist/AddStories";
 import ClientDashboard from "../pages/dashboard/touristPage/ClientDashboard";
 import Payment from "../Components/payments/Payment";
+import JoinTourGuide from "../Components/Dashboard/tourist/JoinTourGuide";
 
 const router = createBrowserRouter([
   {
@@ -88,7 +89,7 @@ const router = createBrowserRouter([
           },
           {
             path: "joinAsTourGuide",
-            element: <h2>Join As Tour Guide</h2>,
+            element: <JoinTourGuide />,
           },
         ],
       },
