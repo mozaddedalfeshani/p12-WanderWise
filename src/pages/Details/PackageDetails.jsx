@@ -35,12 +35,14 @@ const PackageDetails = () => {
     tourGuideEmail: tourGuides.find((guide) => guide.name === selectedGuide)
       ?.email,
   });
-
+  const from = { pathname: `/package/${id}` };
   const openModal = () => {
     if (user) {
       setModalIsOpen(true);
     } else {
-      navigate("/login"); // Navigate to login if user is not logged in
+      navigate("/login", {
+        state: { from },
+      }); // Navigate to login if user is not logged in
     }
   };
   const closeModal = () => setModalIsOpen(false);
