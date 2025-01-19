@@ -15,8 +15,14 @@ const Auth = () => {
   const { user, LoginWithGoogle, loading, signInUser } =
     useContext(AuthContext);
   const handleGoogleLogin = async () => {
-    await LoginWithGoogle();
+    await LoginWithGoogle().then(() => {
+      navigate(from.pathname);
+    });
     // console.log("Google login", user);
+    toast(`Welcome ${user.displayName}`, {
+      type: "success",
+      hideProgressBar: true,
+    });
   };
 
   // login with email and password
@@ -30,9 +36,8 @@ const Auth = () => {
           type: "success",
           hideProgressBar: true,
         });
+        navigate(from.pathname);
       });
-
-      toast("Login successful", { type: "success" });
     } catch (error) {
       // console.log(error);
     }
