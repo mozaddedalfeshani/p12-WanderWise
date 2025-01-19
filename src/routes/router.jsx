@@ -16,6 +16,7 @@ import AddStories from "../Components/Dashboard/tourist/AddStories";
 import ClientDashboard from "../pages/dashboard/touristPage/ClientDashboard";
 import Payment from "../Components/payments/Payment";
 import JoinTourGuide from "../Components/Dashboard/tourist/JoinTourGuide";
+import PrivateProvider from "../provider/PrivateProvider";
 
 const router = createBrowserRouter([
   {
@@ -64,7 +65,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <ClientDashboard />,
+        element: (
+          <PrivateProvider>
+            <ClientDashboard />
+          </PrivateProvider>
+        ),
 
         children: [
           {

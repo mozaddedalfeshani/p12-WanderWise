@@ -1,11 +1,17 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
 const Auth = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || { pathname: "/" };
+  console.log("Auth page current path:", from.pathname);
+
   // import singInWithGoogle from AuthProvider
+
   const { user, LoginWithGoogle, loading, signInUser } =
     useContext(AuthContext);
   const handleGoogleLogin = async () => {
@@ -30,6 +36,10 @@ const Auth = () => {
     } catch (error) {
       // console.log(error);
     }
+  };
+
+  const gotoRegister = () => {
+    navigate("/register", { state: { from: from } });
   };
 
   return (
@@ -83,9 +93,9 @@ const Auth = () => {
               <label className="label">
                 <span className="label-text">Don't have an account?</span>
               </label>
-              <Link to="/register" className="btn btn-outline">
+              <button onClick={gotoRegister} className="btn btn-outline">
                 Register
-              </Link>
+              </button>
             </div>
           </form>
         </div>

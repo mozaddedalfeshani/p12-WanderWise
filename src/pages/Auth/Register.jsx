@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,9 +11,15 @@ const Register = () => {
   const { user, LoginWithGoogle, loading, createAccount } =
     useContext(AuthContext);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const from = location.state?.from || { pathname: "/" };
+  console.log("Register page received path:", from.pathname);
+
+  const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/; // Minimum 8 characters, at least one letter and one number
 
   const validatePassword = (password) => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
     return regex.test(password);
   };
 
@@ -25,6 +31,9 @@ const Register = () => {
   const handleGoogleLogin = async () => {
     await LoginWithGoogle();
     console.log("Google login", user);
+    if (user) {
+      navigate(from.pathname);
+    }
   };
 
   const imageHostingKey = "79dae6d8e77e9a9a901c03b0dfa39f1d";
@@ -75,6 +84,8 @@ const Register = () => {
       toast.success("Registration successful", {
         pauseOnHover: false,
       });
+      console.log("Registration successful", from.pathname);
+      navigate(from.pathname);
     } catch (error) {
       toast.error(
         "Registration failed: " +
