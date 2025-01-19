@@ -29,11 +29,9 @@ const Register = () => {
   };
 
   const handleGoogleLogin = async () => {
-    await LoginWithGoogle();
-    console.log("Google login", user);
-    if (user) {
+    await LoginWithGoogle().then(() => {
       navigate(from.pathname);
-    }
+    });
   };
 
   const imageHostingKey = "79dae6d8e77e9a9a901c03b0dfa39f1d";
