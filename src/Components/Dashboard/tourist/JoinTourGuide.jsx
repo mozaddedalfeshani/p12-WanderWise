@@ -1,13 +1,37 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
+import HOST from "../../../constant/HOST";
 
 const JoinTourGuide = () => {
   const { user } = useContext(AuthContext);
   const reasonRef = useRef(null);
   const cvLinkRef = useRef(null);
+  const [isFormValid, setIsFormValid] = useState(false);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const checkFormValidity = () => {
+      if (
+        reasonRef.current.value.trim() !== "" &&
+        cvLinkRef.current.value.trim() !== ""
+      ) {
+        setIsFormValid(true);
+      } else {
+        setIsFormValid(false);
+      }
+    };
+
+    reasonRef.current.addEventListener("input", checkFormValidity);
+    cvLinkRef.current.addEventListener("input", checkFormValidity);
+
+    return () => {
+      reasonRef.current.removeEventListener("input", checkFormValidity);
+      cvLinkRef.current.removeEventListener("input", checkFormValidity);
+    };
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted");
 
@@ -16,14 +40,19 @@ const JoinTourGuide = () => {
       username: user.displayName,
       reason: reasonRef.current.value,
       cvLink: cvLinkRef.current.value,
+      type: "tourist",
     };
-    console.log(data);
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Your work has been saved",
-      showConfirmButton: false,
-      timer: 1500,
+    console.log("-->", data);
+
+    await axios.post(`${HOST}/tgApplication`, data).then((res) => {
+      console.log(res);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
   };
 
@@ -85,9 +114,17 @@ const JoinTourGuide = () => {
             <path d="M4.5 3.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1Z" />
             <path d="M3 5h10v1H3V5Zm0 2h10v1H3V7Zm0 2h10v1H3V9Zm0 2h10v1H3v-1Z" />
           </svg>
-          <input type="text" className="grow" placeholder="CV Link" ref={cvLinkRef} />
+          <input
+            type="text"
+            className="grow"
+            placeholder="CV Link"
+            ref={cvLinkRef}
+          />
         </label>
-        <button className="btn btn-primary" onClick={handleSubmit}>
+        <button
+          className="btn btn-primary"
+          onClick={handleSubmit}
+          disabled={!isFormValid}>
           Submit
         </button>
       </div>
