@@ -1,12 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { AuthContext } from "../../../provider/AuthProvider";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HOST from "../../../constant/HOST";
 
 const AddStories = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   const handleImageUpload = (event) => {
     const files = Array.from(event.target.files);
@@ -45,13 +48,22 @@ const AddStories = () => {
 
       console.log("Image URLs:", imageUrls);
       const storyData = {
-        title,
-        text,
+        title: title,
+        content: text,
         images: imageUrls,
+        email: user.email,
+        author: user.displayName,
+        image: user.photoURL,
+        date: new Date().toISOString(),
+        sharedCount: [],
       };
 
+      await axios.post(`${HOST}/client/addStory`, storyData).then((res) => {
+        console.log(res.data);
+      });
+      console.log("Story Data:", storyData);
+
       // Send the story data to the server
-      
 
       // Redirect to manage story route
       navigate("/dashboard/manageStories");

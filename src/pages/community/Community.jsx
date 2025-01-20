@@ -26,55 +26,54 @@ const Community = () => {
   const goToRegister = () => {
     navigate("/login", { state: { pathname: "/community" } });
   };
+  console.log(stories);
   return (
-    <Link to="/community">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 mt-5 gap-2 w-full">
-        {stories.map((story, index) => (
-          <div key={index} className="card shadow-sm p-3 mb-5  rounded">
-            <div className="card-header">
-              <div className="avatar">
-                <div className="w-12 h-12 rounded-full">
-                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                </div>
-                <div className="flex-col flex justify-center ml-3 items-center">
-                  <h1 className="text-center text-sm text-base-400 font-roboto">
-                    {story.author}
-                  </h1>
-                  <p className="text-center text-xs text-base-300">
-                    {story.date}
-                  </p>
-                </div>
+    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 mt-5 gap-2 w-full">
+      {stories.map((story, index) => (
+        <div key={index} className="card shadow-sm p-3 mb-5  rounded">
+          <div className="card-header">
+            <div className="avatar">
+              <div className="w-12 h-12 rounded-full">
+                <img src={story.image} />
               </div>
-            </div>
-            <div className="card-body">
-              <figure>
-                <img
-                  src={story.image}
-                  alt="story"
-                  className="img-fluid rounded-md w-96 object-contain"
-                />
-              </figure>
-              <h5 className="card-title">{story.title}</h5>
-              <p className="card-text">{story.content}</p>
-            </div>
-            <div className="card-actions ">
-              <div className="join join-horizontal ">
-                <button className="btn join-item btn-ghost shadow-sm px-7">
-                  <FcLike /> Love
-                </button>
-                <button className="btn join-item btn-ghost shadow-sm px-7">
-                  <FaRegComment /> Comment
-                </button>
-                <FacebookShareButton
-                  url={window.location.href}
-                  className="btn join-item shadow-sm btn-ghost px-7">
-                  <CiShare2 /> Share
-                </FacebookShareButton>
+              <div className="flex-col flex justify-center ml-3 items-center">
+                <h1 className="text-center text-sm text-base-400 font-roboto">
+                  {story.author}
+                </h1>
+                <p className="text-center text-xs text-base-300">
+                  {story.date}
+                </p>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+          <div className="card-body">
+            <figure>
+              <img
+                src={story.images[0]}
+                alt="story"
+                className="img-fluid rounded-md w-96 object-contain"
+              />
+            </figure>
+            <h5 className="card-title">{story.title}</h5>
+            <p className="card-text">{story.content}</p>
+          </div>
+          <div className="card-actions ">
+            <div className="join join-horizontal ">
+              <button className="btn join-item btn-ghost shadow-sm px-7">
+                <FcLike /> Love
+              </button>
+              <button className="btn join-item btn-ghost shadow-sm px-7">
+                <FaRegComment /> Comment
+              </button>
+              <FacebookShareButton
+                url={window.location.href}
+                className="btn join-item shadow-sm btn-ghost px-7">
+                <CiShare2 /> Share
+              </FacebookShareButton>
+            </div>
+          </div>
+        </div>
+      ))}
       <Helmet>
         <title>Community</title>
         <meta
@@ -94,7 +93,7 @@ const Community = () => {
           </button>
         )}
       </div>
-    </Link>
+    </div>
   );
 };
 export default Community;
