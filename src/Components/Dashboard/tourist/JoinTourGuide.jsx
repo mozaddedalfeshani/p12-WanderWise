@@ -26,8 +26,12 @@ const JoinTourGuide = () => {
     cvLinkRef.current.addEventListener("input", checkFormValidity);
 
     return () => {
-      reasonRef.current.removeEventListener("input", checkFormValidity);
-      cvLinkRef.current.removeEventListener("input", checkFormValidity);
+      if (reasonRef.current) {
+        reasonRef.current.removeEventListener("input", checkFormValidity);
+      }
+      if (cvLinkRef.current) {
+        cvLinkRef.current.removeEventListener("input", checkFormValidity);
+      }
     };
   }, []);
 

@@ -70,7 +70,6 @@ const router = createBrowserRouter([
             <ClientDashboard />
           </PrivateProvider>
         ),
-
         children: [
           {
             path: "manageProfile",
@@ -98,7 +97,18 @@ const router = createBrowserRouter([
           },
         ],
       },
+      // admin paths here
+
+      {
+        path: "*",
+        element: <div>404</div>,
+      },
     ],
+  },
+  {
+    path: "/admin",
+    element: <div>Admin</div>,
+    children: [{}],
   },
 ]);
 
