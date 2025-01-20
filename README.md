@@ -1,11 +1,13 @@
 # WanderWise - Client Side
 
 ## Overview
+
 WanderWise is a comprehensive tourism management platform that enhances travelers' experiences by offering well-structured trip packages, user stories, and seamless booking options. This README file covers the client-side implementation of the project.
 
 ---
 
 ## Features
+
 1. **Responsive Design**:
    - Fully responsive for mobile, tablet, and desktop.
 2. **Homepage**:
@@ -28,6 +30,7 @@ WanderWise is a comprehensive tourism management platform that enhances traveler
 ---
 
 ## Packages
+
 - **@stripe/react-stripe-js**: React components for Stripe.js integration.
 - **@stripe/stripe-js**: Stripe.js library for handling payments.
 - **axios**: Promise-based HTTP client for making API requests.
@@ -52,6 +55,7 @@ WanderWise is a comprehensive tourism management platform that enhances traveler
 ---
 
 ## Project Structure
+
 ```plaintext
 src/
 ├── components/       # Reusable components (Navbar, Footer, etc.)
@@ -67,6 +71,7 @@ src/
 ---
 
 ## Tech Stack
+
 - **Frontend Framework**: React.js
 - **State Management**: React Context API
 - **Styling**: Tailwind CSS and custom CSS
@@ -80,13 +85,15 @@ src/
 ## Installation
 
 ### Prerequisites
+
 - Node.js (v14 or higher)
 - npm or yarn
 
 ### Steps
+
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/wanderwise-client.git
+   git clone https://github.com/mozaddedalfeshani/wanderwise-client.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -116,9 +123,11 @@ src/
 ## Folder Details
 
 ### `components/`
+
 - Contains reusable components like Navbar, Footer, Tabs, etc.
 
 ### `pages/`
+
 - **Home**: Contains homepage sections like Banner, Stories, and Packages.
 - **Trips**: Displays all available packages with filters and sorting.
 - **Stories**: User-added stories with sharing options.
@@ -126,12 +135,15 @@ src/
 - **Dashboard**: Role-specific dashboards for managing profiles, bookings, and stories.
 
 ### `context/`
+
 - Global state management using React Context API (e.g., AuthContext for user authentication).
 
 ### `hooks/`
+
 - Custom hooks for fetching data, authentication, and other utilities.
 
 ### `services/`
+
 - Axios-based service functions for API interactions (e.g., `getTrips`, `addStory`).
 
 ---
@@ -154,6 +166,7 @@ src/
 ---
 
 ## Deployment
+
 1. Build the project:
    ```bash
    npm run build
@@ -163,19 +176,21 @@ src/
 ---
 
 ## Links
+
 - **Live Site**: [https://wanderwise.com](https://wanderwise.com)
-- **Backend Repository**: [https://github.com/your-username/wanderwise-backend](https://github.com/your-username/wanderwise-backend)
-- **Frontend Repository**: [https://github.com/your-username/wanderwise-client](https://github.com/your-username/wanderwise-client)
+- **Backend Repository**: [https://github.com/mozaddedalfeshani/wanderwise-backend](https://github.com/mozaddedalfeshani/wanderwise-backend)
+- **Frontend Repository**: [https://github.com/mozaddedalfeshani/wanderwise-client](https://github.com/mozaddedalfeshani/wanderwise-client)
 
 ---
 
 ## Contributors
-- **Your Name** (Developer)
-  - GitHub: [https://github.com/your-username](https://github.com/your-username)
+
+- **M A Murad** (Developer)
+  - GitHub: [https://github.com/mozaddedalfeshani](https://github.com/mozaddedalfeshani)
   - LinkedIn: [https://linkedin.com/in/your-linkedin](https://linkedin.com/in/your-linkedin)
 
 ---
 
 ## License
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
