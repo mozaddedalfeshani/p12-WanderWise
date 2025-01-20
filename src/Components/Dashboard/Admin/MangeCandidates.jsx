@@ -14,7 +14,11 @@ const MangeCandidates = () => {
     });
   }, []);
 
-  const handleAccept = () => {
+  const handleAccept = (app) => {
+    console.log(app._id);
+    axios.post(`${HOST}/admin/tgAAccept/${app._id}`).then((res) => {
+      console.log("Res Data : ", res.data);
+    });
     console.log("Accepted");
   };
   const handleReject = (app) => {
@@ -73,7 +77,7 @@ const MangeCandidates = () => {
               <td style={{ border: "1px solid black" }}>
                 <button
                   className="badge m-1 py-3 badge-primary"
-                  onClick={() => handleAccept()}>
+                  onClick={() => handleAccept(app)}>
                   Accept
                 </button>
                 <button
