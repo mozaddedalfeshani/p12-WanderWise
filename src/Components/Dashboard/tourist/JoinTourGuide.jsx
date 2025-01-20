@@ -46,7 +46,7 @@ const JoinTourGuide = () => {
       cvLink: cvLinkRef.current.value,
       type: "tourist",
     };
- 
+
     await axios.post(`${HOST}/tgApplication`, data).then((res) => {
       console.log("----------------->", res);
       Swal.fire({
@@ -79,8 +79,8 @@ const JoinTourGuide = () => {
           <input
             type="text"
             className="grow"
-            placeholder={user.email}
-            value={user.email}
+            placeholder={user.email || ""}
+            value={user.email || ""}
             readOnly
           />
         </label>
@@ -95,7 +95,7 @@ const JoinTourGuide = () => {
           <input
             type="text"
             className="grow"
-            value={user.displayName}
+            value={user.displayName || ""}
             placeholder="Username"
             readOnly
           />

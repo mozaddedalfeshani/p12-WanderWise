@@ -14,7 +14,7 @@ const Community = () => {
 
   React.useEffect(() => {
     const fetchStories = async () => {
-      await axios.get(`${HOST}/client/userStories`).then((res) => {
+      await axios.get(`${HOST}/client/allStories`).then((res) => {
         setStories(res.data);
         console.log(res.data);
       });

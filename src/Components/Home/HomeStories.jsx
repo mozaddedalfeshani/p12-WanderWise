@@ -12,12 +12,10 @@ const HomeStories = () => {
       const response = await axios
         .get(`${HOST}/client/homeStories`)
         .then((res) => {
-          console.log(res.data);
           setStories(res.data);
         });
     };
     fetchStories();
-    console.log(stories);
   }, []);
 
   return (
