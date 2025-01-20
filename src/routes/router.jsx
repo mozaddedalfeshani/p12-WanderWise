@@ -20,6 +20,7 @@ import PrivateProvider from "../provider/PrivateProvider";
 import AdminProvider from "../provider/AdminProvider";
 import AdminDashboard from "../Components/Dashboard/Admin/AdminDashboard";
 import AdminMange from "../Components/Dashboard/Admin/AdminMange";
+import AddPackages from "../Components/Dashboard/Admin/AddPackages";
 
 const router = createBrowserRouter([
   {
@@ -128,7 +129,7 @@ const router = createBrowserRouter([
 
       {
         path: "addPackage",
-        element: <div>Add Package</div>,
+        element: <AddPackages />,
       },
       {
         path: "manageUser",
