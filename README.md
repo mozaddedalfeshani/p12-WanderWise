@@ -187,7 +187,7 @@ src/
 
 - **M A Murad** (Developer)
   - GitHub: [https://github.com/mozaddedalfeshani](https://github.com/mozaddedalfeshani)
-  - LinkedIn: [https://linkedin.com/in/your-linkedin](https://linkedin.com/in/your-linkedin)
+  - LinkedIn: [https://linkedin.com/in/mozaddedalfeshani](https://linkedin.com/in/your-linkedin)
 
 ---
 
