@@ -63,7 +63,7 @@ const NavBar = () => {
         className={`font-roboto font-medium ${
           theme === "dark" ? "text-white" : "text-black"
         }`}>
-        <Link to={`/admindashboard`}>Admin Dashboard </Link>
+        <Link to={`/admin`}>Admin Dashboard </Link>
       </li>
     ) : (
       <li

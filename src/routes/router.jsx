@@ -17,6 +17,8 @@ import ClientDashboard from "../pages/dashboard/touristPage/ClientDashboard";
 import Payment from "../Components/payments/Payment";
 import JoinTourGuide from "../Components/Dashboard/tourist/JoinTourGuide";
 import PrivateProvider from "../provider/PrivateProvider";
+import AdminProvider from "../provider/AdminProvider";
+import AdminDashboard from "../Components/Dashboard/Admin/AdminDashboard";
 
 const router = createBrowserRouter([
   {
@@ -63,14 +65,7 @@ const router = createBrowserRouter([
         path: "/tgProfile/:id",
         element: <TgDetails />,
       },
-      {
-        path: "/admindashboard",
-        element: (
-          <PrivateProvider>
-            <div>Admin Dashboard</div>
-          </PrivateProvider>
-        ),
-      },
+
       {
         path: "/dashboard",
         element: (
@@ -115,8 +110,37 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <div>Admin</div>,
-    children: [{}],
+    element: (
+      <AdminProvider>
+        <AdminDashboard />
+      </AdminProvider>
+    ),
+    children: [
+      {
+        path: "dashboard",
+        element: <div>Dashboard</div>,
+      },
+      {
+        path: "manageTourGuide",
+        element: <div>Manage Tour Guide</div>,
+      },
+      {
+        path: "manageProfile",
+        element: <div>Manage Profile</div>,
+      },
+      {
+        path: "addPackage",
+        element: <div>Add Package</div>,
+      },
+      {
+        path: "manageUser",
+        element: <div>Manage User</div>,
+      },
+      {
+        path: "manageCandidates",
+        element: <div>Manage Candidates</div>,
+      },
+    ],
   },
 ]);
 
