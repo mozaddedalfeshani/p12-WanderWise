@@ -46,14 +46,13 @@ const JoinTourGuide = () => {
       cvLink: cvLinkRef.current.value,
       type: "tourist",
     };
-    console.log("-->", data);
-
+ 
     await axios.post(`${HOST}/tgApplication`, data).then((res) => {
-      console.log(res);
+      console.log("----------------->", res);
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Your applicaton has been saved",
+        title: "Your application has been saved",
         showConfirmButton: false,
         timer: 1500,
       });
