@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import UserIcon from "./UserIcon";
 import { PiMountainsDuotone } from "react-icons/pi";
 import { AuthContext } from "../../provider/AuthProvider";
+import { use } from "react";
+import axios from "axios";
+import HOST from "../../constant/HOST";
 
 const NavBar = () => {
   const [theme, setTheme] = useState("cupcake");
@@ -12,11 +15,13 @@ const NavBar = () => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
+  const [userType, setUserType] = useState();
+
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "cupcake" : "dark";
     setTheme(newTheme);
   };
-
+  console.log(userType);
   const { user, LogOut } = useContext(AuthContext);
   // console.log(user);
   const handleLogout = async () => {
@@ -26,6 +31,14 @@ const NavBar = () => {
       // console.log(error);
     }
   };
+  useEffect(() => {
+    if (user) {
+      const res = axios.get(`${HOST}/clientinfo/${user.email}`).then((res) => {
+        console.log("internal host", res.data);
+        setUserType(res.data.userType);
+      });
+    }
+  }, [user]);
   const items = [
     <li
       key="home"
@@ -55,6 +68,9 @@ const NavBar = () => {
       }`}>
       <Link to="/trips">Trips</Link>
     </li>,
+    //check if user.email is admin@ww.com so that only admin can see the dashboard link
+
+    console.log("the type of user is", userType),
     user ? (
       user.email === "admin@ww.com" ? (
         <li
@@ -64,13 +80,21 @@ const NavBar = () => {
           }`}>
           <Link to={`/admin`}>Admin Dashboard </Link>
         </li>
+      ) : userType === "tourist" ? (
+        <li
+          key="touristdashboard"
+          className={`font-roboto font-medium ${
+            theme === "dark" ? "text-white" : "text-black"
+          }`}>
+          <Link to={`/dashboard`}>Dashboard</Link>
+        </li>
       ) : (
         <li
           key="dashboard"
           className={`font-roboto font-medium ${
             theme === "dark" ? "text-white" : "text-black"
           }`}>
-          <Link to={`/dashboard`}>Dashboard</Link>
+          <Link to={`/tdashboard`}>Dashboard</Link>
         </li>
       )
     ) : null,

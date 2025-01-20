@@ -134,13 +134,12 @@ const AuthProvider = ({ children }) => {
   };
 
   // the update profile function
-  const updateUserProfile = async (photoURL) => {
+  const updateProfile = async (photoURL) => {
     try {
       await updateProfile(auth.currentUser, {
         photoURL: photoURL,
       });
-      setUser(auth.currentUser);
-    } catch (error) {
+    } catch {
       console.error("Error updating profile: " + error.message);
       toast.error("Error updating profile: " + error.message);
     }
@@ -164,7 +163,6 @@ const AuthProvider = ({ children }) => {
     signInUser,
     createAccount,
     LogOut,
-    updateUserProfile,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

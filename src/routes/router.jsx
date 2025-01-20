@@ -24,6 +24,7 @@ import AddPackages from "../Components/Dashboard/Admin/AddPackages";
 import MangeCandidates from "../Components/Dashboard/Admin/MangeCandidates";
 import AboutUs from "../pages/About/AboutUs";
 import ManageUser from "../Components/Dashboard/Admin/ManageUser";
+import TGDashboard from "../Components/guiders/TGDashboard";
 
 const router = createBrowserRouter([
   {
@@ -70,7 +71,14 @@ const router = createBrowserRouter([
         path: "/tgProfile/:id",
         element: <TgDetails />,
       },
-
+      {
+        path: "/tdashboard",
+        element: (
+          <PrivateProvider>
+            <TGDashboard />
+          </PrivateProvider>
+        ),
+      },
       {
         path: "/dashboard",
         element: (
