@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ClientLayout from "../layout/ClientLayout";
 import HomePage from "../pages/HomePage";
 import Auth from "../pages/Auth/Auth";
@@ -25,6 +26,9 @@ import MangeCandidates from "../Components/Dashboard/Admin/MangeCandidates";
 import AboutUs from "../pages/About/AboutUs";
 import ManageUser from "../Components/Dashboard/Admin/ManageUser";
 import TGDashboard from "../Components/guiders/TGDashboard";
+import MangeTG from "../Components/guiders/navs/MangeTG";
+import AssignedTG from "../Components/guiders/navs/AssignedTG";
+import TGStories from "../Components/guiders/navs/TGStories";
 
 const router = createBrowserRouter([
   {
@@ -78,7 +82,22 @@ const router = createBrowserRouter([
             <TGDashboard />
           </PrivateProvider>
         ),
+        children: [
+          {
+            path: "manageProfile",
+            element: <MangeTG />,
+          },
+          {
+            path: "myassignedTour",
+            element: <AssignedTG />,
+          },
+          {
+            path: "addStories",
+            element: <TGStories />,
+          },
+        ],
       },
+
       {
         path: "/dashboard",
         element: (
