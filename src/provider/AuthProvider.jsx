@@ -133,6 +133,19 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  // the update profile function
+  const updateUserProfile = async (photoURL) => {
+    try {
+      await updateProfile(auth.currentUser, {
+        photoURL: photoURL,
+      });
+      setUser(auth.currentUser);
+    } catch (error) {
+      console.error("Error updating profile: " + error.message);
+      toast.error("Error updating profile: " + error.message);
+    }
+  };
+
   // logout user
   //
   const LogOut = async () => {
@@ -151,6 +164,7 @@ const AuthProvider = ({ children }) => {
     signInUser,
     createAccount,
     LogOut,
+    updateUserProfile,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
