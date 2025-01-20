@@ -64,6 +64,14 @@ const router = createBrowserRouter([
         element: <TgDetails />,
       },
       {
+        path: "/admindashboard",
+        element: (
+          <PrivateProvider>
+            <div>Admin Dashboard</div>
+          </PrivateProvider>
+        ),
+      },
+      {
         path: "/dashboard",
         element: (
           <PrivateProvider>

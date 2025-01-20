@@ -55,7 +55,17 @@ const NavBar = () => {
       }`}>
       <Link to="/trips">Trips</Link>
     </li>,
-    user && (
+    //check if user.email is admin@ww.com so that only admin can see the dashboard link
+
+    user && user.email === "admin@ww.com" ? (
+      <li
+        key="admindashboard"
+        className={`font-roboto font-medium ${
+          theme === "dark" ? "text-white" : "text-black"
+        }`}>
+        <Link to={`/admindashboard`}>Admin Dashboard </Link>
+      </li>
+    ) : (
       <li
         key="dashboard"
         className={`font-roboto font-medium ${
