@@ -19,6 +19,7 @@ import JoinTourGuide from "../Components/Dashboard/tourist/JoinTourGuide";
 import PrivateProvider from "../provider/PrivateProvider";
 import AdminProvider from "../provider/AdminProvider";
 import AdminDashboard from "../Components/Dashboard/Admin/AdminDashboard";
+import AdminMange from "../Components/Dashboard/Admin/AdminMange";
 
 const router = createBrowserRouter([
   {
@@ -117,17 +118,14 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "dashboard",
-        element: <div>Dashboard</div>,
+        path: "/admin",
+        element: <AdminMange />,
       },
       {
         path: "manageTourGuide",
         element: <div>Manage Tour Guide</div>,
       },
-      {
-        path: "manageProfile",
-        element: <div>Manage Profile</div>,
-      },
+
       {
         path: "addPackage",
         element: <div>Add Package</div>,

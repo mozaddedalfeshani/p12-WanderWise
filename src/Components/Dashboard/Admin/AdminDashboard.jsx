@@ -29,9 +29,6 @@ const AdminDashboard = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
               <li>
-                <Link to="/admin/manageProfile">Manage Profile</Link>
-              </li>
-              <li>
                 <Link to="/admin/addPackage">Add Package</Link>
               </li>
               <li>
@@ -44,7 +41,9 @@ const AdminDashboard = () => {
           </div>
         </div>
         <div className="navbar-center">
-          <a className="btn btn-ghost text-xl">Admin Dashboard</a>
+          <Link to="/admin" className="btn btn-ghost text-xl">
+            Admin Dashboard
+          </Link>
         </div>
         <div className="navbar-end">
           <button className="btn btn-ghost btn-circle">
