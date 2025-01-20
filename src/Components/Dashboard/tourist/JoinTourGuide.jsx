@@ -53,7 +53,7 @@ const JoinTourGuide = () => {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Your work has been saved",
+        title: "Your applicaton has been saved",
         showConfirmButton: false,
         timer: 1500,
       });
