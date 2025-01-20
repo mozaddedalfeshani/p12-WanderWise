@@ -23,6 +23,7 @@ import AdminMange from "../Components/Dashboard/Admin/AdminMange";
 import AddPackages from "../Components/Dashboard/Admin/AddPackages";
 import MangeCandidates from "../Components/Dashboard/Admin/MangeCandidates";
 import AboutUs from "../pages/About/AboutUs";
+import ManageUser from "../Components/Dashboard/Admin/ManageUser";
 
 const router = createBrowserRouter([
   {
@@ -135,7 +136,7 @@ const router = createBrowserRouter([
       },
       {
         path: "manageUser",
-        element: <div>Manage User</div>,
+        element: <ManageUser />,
       },
       {
         path: "manageCandidates",
