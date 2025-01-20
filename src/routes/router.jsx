@@ -22,6 +22,7 @@ import AdminDashboard from "../Components/Dashboard/Admin/AdminDashboard";
 import AdminMange from "../Components/Dashboard/Admin/AdminMange";
 import AddPackages from "../Components/Dashboard/Admin/AddPackages";
 import MangeCandidates from "../Components/Dashboard/Admin/MangeCandidates";
+import AboutUs from "../pages/About/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -53,8 +54,8 @@ const router = createBrowserRouter([
         element: <Community />,
       },
       {
-        path: "about",
-        element: <div>About</div>,
+        path: "/about",
+        element: <AboutUs />,
       },
       {
         path: "/tgInfo/:id",
