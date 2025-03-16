@@ -177,9 +177,9 @@ src/
 
 ## Links
 
-- **Live Site**: [https://wanderwise.com](https://wanderwise.com)
-- **Backend Repository**: [https://github.com/mozaddedalfeshani/wanderwise-backend](https://github.com/mozaddedalfeshani/wanderwise-backend)
-- **Frontend Repository**: [https://github.com/mozaddedalfeshani/wanderwise-client](https://github.com/mozaddedalfeshani/wanderwise-client)
+- **Live Site**: [wanderwise](https://wanderwise-3c193.web.app/)
+- **Backend Repository**: [wanderwise-backend](https://github.com/mozaddedalfeshani/b10a12-server-side.git)
+- 
 
 ---
 
@@ -187,7 +187,7 @@ src/
 
 - **M A Murad** (Developer)
   - GitHub: [https://github.com/mozaddedalfeshani](https://github.com/mozaddedalfeshani)
-  - LinkedIn: [https://linkedin.com/in/mozaddedalfeshani](https://linkedin.com/in/your-linkedin)
+  - LinkedIn: [https://linkedin.com/in/mozaddedalfeshani](https://linkedin.com/in/mozaddedalfeshani)
 
 ---
 
